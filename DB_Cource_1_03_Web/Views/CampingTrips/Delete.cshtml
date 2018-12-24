@@ -1,0 +1,80 @@
+﻿@model DB_Cource_1_03_Web.Models.CampingTrip
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CampingTrip</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPlanned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPlanned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampingRoute.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampingRoute.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tourist.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tourist.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TouristLevel.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TouristLevel.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

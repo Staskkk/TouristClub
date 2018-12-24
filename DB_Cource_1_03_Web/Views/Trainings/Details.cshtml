@@ -1,0 +1,58 @@
+﻿@model DB_Cource_1_03_Web.Models.Training
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Training</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PeopleCame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeopleCame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsHappen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsHappen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Group.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Schedule.Address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

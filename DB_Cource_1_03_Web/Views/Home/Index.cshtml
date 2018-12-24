@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <h1>Tourist club Ukraine</h1>
+    <div class="col-md-6">
+        <img src="~/Content/Images/logo.png" />
+    </div>
+    <div class="col-md-6">
+        <p class="lead">«Tourist Club» - Tour Operator, one of the largest in Ukraine. The company began operations in 1995, and immediately took a strong position in the tourism industry. This was made possible thanks to a fundamentally new approach to the management of tour operator activities, as well as extensive professional experience of the team of highly qualified specialists, has long been successfully operating in the tourist market.</p>
+    </div>
+</div>
+
+<div class="col-md-12">
+    @Html.ActionLink("List of tourists", "Index", "Tourists")
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>List of tourists</h2>
+        <p>
+            Get list of tourists in section, group, by birthday, sex, age.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func1_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of trainers</h2>
+        <p>
+            Get list of trainers from section, for all sections, by age, sex, specialization.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func2_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of competitions</h2>
+        <p>
+            Get list of competitions where participated tourists from section, for all sections.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func3_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>List of trainers</h2>
+        <p>
+            Get list of trainers, that trained in group, at the specified time.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func4_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of tourists</h2>
+        <p>
+            Get list of tourists in section, group, that were in specified count of trips, were in specified trip, at specified time,
+            use specified route, were in specified place, have specified category.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func5_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of directors</h2>
+        <p>
+            Get list of section directors by section, birthday, age, year of appointment.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func6_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Schedule of trainers</h2>
+        <p>
+            Get schedule of trainers by activity, for specified period of time, for section.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func7_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of routes</h2>
+        <p>
+            Get list of routes, that were used by tourists from section, at specified period of time, with specified instructor, by specified count of groups that used route.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func8_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of routes</h2>
+        <p>
+            Get list of routes that use specified camping place, have length more than specified, by level of hardness.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func9_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>List of tourists</h2>
+        <p>
+            Get list of tourists from section, group, that can go to specified types of camping trips.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func10_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of instructors</h2>
+        <p>
+            Get list of instructors, instructor-trainers, by category, that were at specified count of trips, were at specified trip, used specified camping place.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func11_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of tourists</h2>
+        <p>
+            Get list of tourists from section, group, that were in trips with their trainer as instructor.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func12_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>List of tourists</h2>
+        <p>
+            Get list of tourists from section, group, that were at all routes, at specified routes.
+        </p>
+        <p>@Html.ActionLink("Get", "Create", "func13_Result", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>

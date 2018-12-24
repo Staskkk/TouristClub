@@ -1,0 +1,58 @@
+﻿@model DB_Cource_1_03_Web.Models.TripRecord
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TripRecord</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampingPlace.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampingPlace.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampingTrip.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampingTrip.Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,2257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sp19TourClubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActivityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AreaType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampingPlaces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampingRoutePlaceInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampingRouteId" Type="int" Nullable="false" />
+          <Property Name="CampingPlaceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampingRoutes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaTypeId" Type="int" Nullable="false" />
+          <Property Name="DurationDays" Type="int" Nullable="false" />
+          <Property Name="LengthKm" Type="float" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CampingTrips">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampingRouteId" Type="int" Nullable="false" />
+          <Property Name="TouristMinLevelId" Type="int" Nullable="false" />
+          <Property Name="InstructorId" Type="int" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="int" Nullable="false" />
+          <Property Name="IsPlanned" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Competitions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SectionId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DayOfWeek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TrainerId" Type="int" Nullable="false" />
+          <Property Name="SectionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="int" Nullable="false" />
+          <Property Name="DayOfWeekId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TrainerId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sections">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TouristAssigments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TouristId" Type="int" Nullable="false" />
+          <Property Name="TouristPostId" Type="int" />
+          <Property Name="SectionId" Type="int" />
+          <Property Name="TouristLevelId" Type="int" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="TouristCampingTripInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TouristId" Type="int" Nullable="false" />
+          <Property Name="CampingTripId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TouristCompetitionInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TouristId" Type="int" Nullable="false" />
+          <Property Name="CompetitionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TouristGroupInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TouristId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="TouristLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TouristPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tourists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+          <Property Name="Sername" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trainings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleId" Type="int" Nullable="false" />
+          <Property Name="PeopleCame" Type="int" Nullable="false" />
+          <Property Name="IsHappen" Type="bit" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TripRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampingTripId" Type="int" Nullable="false" />
+          <Property Name="CampingPlaceId" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CampingRo__AreaT__5CD6CB2B">
+          <End Role="AreaType" Type="Self.AreaType" Multiplicity="1" />
+          <End Role="CampingRoutes" Type="Self.CampingRoutes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingRoutes">
+              <PropertyRef Name="AreaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingRo__Campi__619B8048">
+          <End Role="CampingRoutes" Type="Self.CampingRoutes" Multiplicity="1" />
+          <End Role="CampingRoutePlaceInfo" Type="Self.CampingRoutePlaceInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingRoutes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingRoutePlaceInfo">
+              <PropertyRef Name="CampingRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingRo__Campi__628FA481">
+          <End Role="CampingPlaces" Type="Self.CampingPlaces" Multiplicity="1" />
+          <End Role="CampingRoutePlaceInfo" Type="Self.CampingRoutePlaceInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingPlaces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingRoutePlaceInfo">
+              <PropertyRef Name="CampingPlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingTr__Activ__68487DD7">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingTr__Campi__656C112C">
+          <End Role="CampingRoutes" Type="Self.CampingRoutes" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingRoutes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="CampingRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingTr__Instr__6754599E">
+          <End Role="Tourists" Type="Self.Tourists" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingTr__Touri__66603565">
+          <End Role="TouristLevel" Type="Self.TouristLevel" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="TouristMinLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Competiti__Secti__72C60C4A">
+          <End Role="Sections" Type="Self.Sections" Multiplicity="1" />
+          <End Role="Competitions" Type="Self.Competitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Competitions">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__SectionI__4CA06362">
+          <End Role="Sections" Type="Self.Sections" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__TrainerI__4BAC3F29">
+          <End Role="Tourists" Type="Self.Tourists" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__Activi__5441852A">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__DayOfW__5535A963">
+          <End Role="DayOfWeek" Type="Self.DayOfWeek" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayOfWeek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="DayOfWeekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__GroupI__534D60F1">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__Traine__5629CD9C">
+          <End Role="Tourists" Type="Self.Tourists" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sections__Activi__4316F928">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="Sections" Type="Self.Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sections">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Secti__47DBAE45">
+          <End Role="Sections" Type="Self.Sections" Multiplicity="0..1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Touri__45F365D3">
+          <End Role="Tourists" Type="Self.Tourists" Multiplicity="1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Touri__46E78A0C">
+          <End Role="TouristPost" Type="Self.TouristPost" Multiplicity="0..1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristPost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="TouristPostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Touri__48CFD27E">
+          <End Role="TouristLevel" Type="Self.TouristLevel" Multiplicity="0..1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="TouristLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCa__Campi__6C190EBB">
+          <End Role="CampingTrips" Type="Self.CampingTrips" Multiplicity="1" />
+          <End Role="TouristCampingTripInfo" Type="Self.TouristCampingTripInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingTrips">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCampingTripInfo">
+              <PropertyRef Name="CampingTripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCa__Touri__6B24EA82">
+          <End Role="Tourists" Type="Self.Tourists" Multiplicity="1" />
+          <End Role="TouristCampingTripInfo" Type="Self.TouristCampingTripInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCampingTripInfo">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCo__Compe__76969D2E">
+          <End Role="Competitions" Type="Self.Competitions" Multiplicity="1" />
+          <End Role="TouristCompetitionInfo" Type="Self.TouristCompetitionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competitions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCompetitionInfo">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCo__Touri__75A278F5">
+          <End Role="Tourists" Type="Self.Tourists" Multiplicity="1" />
+          <End Role="TouristCompetitionInfo" Type="Self.TouristCompetitionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCompetitionInfo">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristGr__Group__5070F446">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="TouristGroupInfo" Type="Self.TouristGroupInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristGroupInfo">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristGr__Touri__4F7CD00D">
+          <End Role="Tourists" Type="Self.Tourists" Multiplicity="1" />
+          <End Role="TouristGroupInfo" Type="Self.TouristGroupInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristGroupInfo">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trainings__Group__59FA5E80">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trainings__Sched__59063A47">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TripRecor__Campi__6EF57B66">
+          <End Role="CampingTrips" Type="Self.CampingTrips" Multiplicity="1" />
+          <End Role="TripRecords" Type="Self.TripRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingTrips">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripRecords">
+              <PropertyRef Name="CampingTripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TripRecor__Campi__6FE99F9F">
+          <End Role="CampingPlaces" Type="Self.CampingPlaces" Multiplicity="1" />
+          <End Role="TripRecords" Type="Self.TripRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingPlaces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripRecords">
+              <PropertyRef Name="CampingPlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="func1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="group" Type="varchar" Mode="In" />
+          <Parameter Name="sex" Type="bit" Mode="In" />
+          <Parameter Name="birthDate" Type="date" Mode="In" />
+          <Parameter Name="age" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sex" Type="bit" Nullable="false" />
+                <Property Name="BirthDate" Type="date" Nullable="false" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+                <Property Name="Age" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="group" Type="varchar" Mode="In" />
+          <Parameter Name="allowedTripActivityType" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+                <Property Name="GroupName" Type="varchar" MaxLength="255" />
+                <Property Name="AllowedTripActivityType" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func11" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="isInstructorTrainer" Type="bit" Mode="In" />
+          <Parameter Name="instructorLevel" Type="varchar" Mode="In" />
+          <Parameter Name="campingTripsCount" Type="int" Mode="In" />
+          <Parameter Name="campingTripId" Type="int" Mode="In" />
+          <Parameter Name="campingRouteId" Type="int" Mode="In" />
+          <Parameter Name="campingPlace" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" />
+                <Property Name="InstructorLevel" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func12" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="group" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+                <Property Name="GroupName" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func13" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="group" Type="varchar" Mode="In" />
+          <Parameter Name="routeId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+                <Property Name="GroupName" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="sex" Type="bit" Mode="In" />
+          <Parameter Name="age" Type="int" Mode="In" />
+          <Parameter Name="specActivity" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sex" Type="bit" Nullable="false" />
+                <Property Name="BirthDate" Type="date" Nullable="false" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+                <Property Name="Age" Type="int" />
+                <Property Name="SpecActivity" Type="varchar" MaxLength="255" />
+                <Property Name="TouristPost" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="StartDate" Type="date" Nullable="false" />
+                <Property Name="EndDate" Type="date" Nullable="false" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group" Type="varchar" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="startTime" Type="time" Mode="In" />
+          <Parameter Name="endTime" Type="time" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="TrainingDate" Type="date" />
+                <Property Name="GroupName" Type="varchar" MaxLength="255" />
+                <Property Name="ActivityType" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="group" Type="varchar" Mode="In" />
+          <Parameter Name="tripCount" Type="int" Mode="In" />
+          <Parameter Name="campingTripId" Type="int" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+          <Parameter Name="campingRouteId" Type="int" Mode="In" />
+          <Parameter Name="campingPlace" Type="varchar" Mode="In" />
+          <Parameter Name="touristLevel" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sex" Type="bit" Nullable="false" />
+                <Property Name="BirthDate" Type="date" Nullable="false" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+                <Property Name="GroupName" Type="varchar" MaxLength="255" />
+                <Property Name="TouristLevel" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="birthDate" Type="date" Mode="In" />
+          <Parameter Name="age" Type="int" Mode="In" />
+          <Parameter Name="assigmentYear" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+                <Property Name="Sername" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="Sex" Type="bit" Nullable="false" />
+                <Property Name="BirthDate" Type="date" Nullable="false" />
+                <Property Name="Section" Type="varchar" MaxLength="255" />
+                <Property Name="Age" Type="int" />
+                <Property Name="AssigmentYear" Type="int" />
+                <Property Name="TouristPost" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trainerName" Type="varchar" Mode="In" />
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="activityType" Type="varchar" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+                <Property Name="TrainingType" Type="varchar" MaxLength="255" />
+                <Property Name="TrainingHours" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func8" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="section" Type="varchar" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+          <Parameter Name="instructorName" Type="varchar" Mode="In" />
+          <Parameter Name="groupCount" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="AreaType" Type="varchar" MaxLength="255" />
+                <Property Name="DurationDays" Type="int" Nullable="false" />
+                <Property Name="LengthKm" Type="float" Nullable="false" />
+                <Property Name="Description" Type="varchar" MaxLength="255" />
+                <Property Name="StartDate" Type="date" />
+                <Property Name="EndDate" Type="date" />
+                <Property Name="GroupName" Type="varchar" MaxLength="255" />
+                <Property Name="Instructor" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func9" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="campingPlace" Type="varchar" Mode="In" />
+          <Parameter Name="minLengthKm" Type="int" Mode="In" />
+          <Parameter Name="minTouristLevel" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="AreaType" Type="varchar" MaxLength="255" />
+                <Property Name="DurationDays" Type="int" Nullable="false" />
+                <Property Name="LengthKm" Type="float" Nullable="false" />
+                <Property Name="Description" Type="varchar" MaxLength="255" />
+                <Property Name="TouristLevel" Type="varchar" MaxLength="255" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="sp19TourClubModelStoreContainer">
+          <EntitySet Name="ActivityType" EntityType="Self.ActivityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AreaType" EntityType="Self.AreaType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampingPlaces" EntityType="Self.CampingPlaces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampingRoutePlaceInfo" EntityType="Self.CampingRoutePlaceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampingRoutes" EntityType="Self.CampingRoutes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampingTrips" EntityType="Self.CampingTrips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competitions" EntityType="Self.Competitions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DayOfWeek" EntityType="Self.DayOfWeek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sections" EntityType="Self.Sections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristAssigments" EntityType="Self.TouristAssigments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristCampingTripInfo" EntityType="Self.TouristCampingTripInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristCompetitionInfo" EntityType="Self.TouristCompetitionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristGroupInfo" EntityType="Self.TouristGroupInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristLevel" EntityType="Self.TouristLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristPost" EntityType="Self.TouristPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tourists" EntityType="Self.Tourists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainings" EntityType="Self.Trainings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TripRecords" EntityType="Self.TripRecords" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CampingRo__AreaT__5CD6CB2B" Association="Self.FK__CampingRo__AreaT__5CD6CB2B">
+            <End Role="AreaType" EntitySet="AreaType" />
+            <End Role="CampingRoutes" EntitySet="CampingRoutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingRo__Campi__619B8048" Association="Self.FK__CampingRo__Campi__619B8048">
+            <End Role="CampingRoutes" EntitySet="CampingRoutes" />
+            <End Role="CampingRoutePlaceInfo" EntitySet="CampingRoutePlaceInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingRo__Campi__628FA481" Association="Self.FK__CampingRo__Campi__628FA481">
+            <End Role="CampingPlaces" EntitySet="CampingPlaces" />
+            <End Role="CampingRoutePlaceInfo" EntitySet="CampingRoutePlaceInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingTr__Activ__68487DD7" Association="Self.FK__CampingTr__Activ__68487DD7">
+            <End Role="ActivityType" EntitySet="ActivityType" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingTr__Campi__656C112C" Association="Self.FK__CampingTr__Campi__656C112C">
+            <End Role="CampingRoutes" EntitySet="CampingRoutes" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingTr__Instr__6754599E" Association="Self.FK__CampingTr__Instr__6754599E">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingTr__Touri__66603565" Association="Self.FK__CampingTr__Touri__66603565">
+            <End Role="TouristLevel" EntitySet="TouristLevel" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Competiti__Secti__72C60C4A" Association="Self.FK__Competiti__Secti__72C60C4A">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="Competitions" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__SectionI__4CA06362" Association="Self.FK__Groups__SectionI__4CA06362">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__TrainerI__4BAC3F29" Association="Self.FK__Groups__TrainerI__4BAC3F29">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__Activi__5441852A" Association="Self.FK__Schedule__Activi__5441852A">
+            <End Role="ActivityType" EntitySet="ActivityType" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__DayOfW__5535A963" Association="Self.FK__Schedule__DayOfW__5535A963">
+            <End Role="DayOfWeek" EntitySet="DayOfWeek" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__GroupI__534D60F1" Association="Self.FK__Schedule__GroupI__534D60F1">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__Traine__5629CD9C" Association="Self.FK__Schedule__Traine__5629CD9C">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sections__Activi__4316F928" Association="Self.FK__Sections__Activi__4316F928">
+            <End Role="ActivityType" EntitySet="ActivityType" />
+            <End Role="Sections" EntitySet="Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Secti__47DBAE45" Association="Self.FK__TouristAs__Secti__47DBAE45">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Touri__45F365D3" Association="Self.FK__TouristAs__Touri__45F365D3">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Touri__46E78A0C" Association="Self.FK__TouristAs__Touri__46E78A0C">
+            <End Role="TouristPost" EntitySet="TouristPost" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Touri__48CFD27E" Association="Self.FK__TouristAs__Touri__48CFD27E">
+            <End Role="TouristLevel" EntitySet="TouristLevel" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCa__Campi__6C190EBB" Association="Self.FK__TouristCa__Campi__6C190EBB">
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+            <End Role="TouristCampingTripInfo" EntitySet="TouristCampingTripInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCa__Touri__6B24EA82" Association="Self.FK__TouristCa__Touri__6B24EA82">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristCampingTripInfo" EntitySet="TouristCampingTripInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCo__Compe__76969D2E" Association="Self.FK__TouristCo__Compe__76969D2E">
+            <End Role="Competitions" EntitySet="Competitions" />
+            <End Role="TouristCompetitionInfo" EntitySet="TouristCompetitionInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCo__Touri__75A278F5" Association="Self.FK__TouristCo__Touri__75A278F5">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristCompetitionInfo" EntitySet="TouristCompetitionInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristGr__Group__5070F446" Association="Self.FK__TouristGr__Group__5070F446">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="TouristGroupInfo" EntitySet="TouristGroupInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristGr__Touri__4F7CD00D" Association="Self.FK__TouristGr__Touri__4F7CD00D">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristGroupInfo" EntitySet="TouristGroupInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trainings__Group__59FA5E80" Association="Self.FK__Trainings__Group__59FA5E80">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trainings__Sched__59063A47" Association="Self.FK__Trainings__Sched__59063A47">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TripRecor__Campi__6EF57B66" Association="Self.FK__TripRecor__Campi__6EF57B66">
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+            <End Role="TripRecords" EntitySet="TripRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TripRecor__Campi__6FE99F9F" Association="Self.FK__TripRecor__Campi__6FE99F9F">
+            <End Role="CampingPlaces" EntitySet="CampingPlaces" />
+            <End Role="TripRecords" EntitySet="TripRecords" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sp19TourClubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="func1_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="func10_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AllowedTripActivityType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func11_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InstructorLevel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func12_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func13_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func2_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="SpecActivity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TouristPost" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func3_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func4_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TrainingDate" Type="DateTime" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func5_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TouristLevel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func6_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="AssigmentYear" Type="Int32" />
+          <Property Name="TouristPost" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func7_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TrainingType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TrainingHours" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="func8_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="AreaType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DurationDays" Type="Int32" Nullable="false" />
+          <Property Name="LengthKm" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Instructor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="func9_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="AreaType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DurationDays" Type="Int32" Nullable="false" />
+          <Property Name="LengthKm" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TouristLevel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="ActivityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CampingTrips" Relationship="Self.FK__CampingTr__Activ__68487DD7" FromRole="ActivityType" ToRole="CampingTrips" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__Activi__5441852A" FromRole="ActivityType" ToRole="Schedule" />
+          <NavigationProperty Name="Sections" Relationship="Self.FK__Sections__Activi__4316F928" FromRole="ActivityType" ToRole="Sections" />
+        </EntityType>
+        <EntityType Name="AreaType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CampingRoutes" Relationship="Self.FK__CampingRo__AreaT__5CD6CB2B" FromRole="AreaType" ToRole="CampingRoutes" />
+        </EntityType>
+        <EntityType Name="CampingPlace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CampingRoutePlaceInfoes" Relationship="Self.FK__CampingRo__Campi__628FA481" FromRole="CampingPlaces" ToRole="CampingRoutePlaceInfo" />
+          <NavigationProperty Name="TripRecords" Relationship="Self.FK__TripRecor__Campi__6FE99F9F" FromRole="CampingPlaces" ToRole="TripRecords" />
+        </EntityType>
+        <EntityType Name="CampingRoutePlaceInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampingRouteId" Type="Int32" Nullable="false" />
+          <Property Name="CampingPlaceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CampingPlace" Relationship="Self.FK__CampingRo__Campi__628FA481" FromRole="CampingRoutePlaceInfo" ToRole="CampingPlaces" />
+          <NavigationProperty Name="CampingRoute" Relationship="Self.FK__CampingRo__Campi__619B8048" FromRole="CampingRoutePlaceInfo" ToRole="CampingRoutes" />
+        </EntityType>
+        <EntityType Name="CampingRoute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DurationDays" Type="Int32" Nullable="false" />
+          <Property Name="LengthKm" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AreaType" Relationship="Self.FK__CampingRo__AreaT__5CD6CB2B" FromRole="CampingRoutes" ToRole="AreaType" />
+          <NavigationProperty Name="CampingRoutePlaceInfoes" Relationship="Self.FK__CampingRo__Campi__619B8048" FromRole="CampingRoutes" ToRole="CampingRoutePlaceInfo" />
+          <NavigationProperty Name="CampingTrips" Relationship="Self.FK__CampingTr__Campi__656C112C" FromRole="CampingRoutes" ToRole="CampingTrips" />
+        </EntityType>
+        <EntityType Name="CampingTrip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampingRouteId" Type="Int32" Nullable="false" />
+          <Property Name="TouristMinLevelId" Type="Int32" Nullable="false" />
+          <Property Name="InstructorId" Type="Int32" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsPlanned" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ActivityType" Relationship="Self.FK__CampingTr__Activ__68487DD7" FromRole="CampingTrips" ToRole="ActivityType" />
+          <NavigationProperty Name="CampingRoute" Relationship="Self.FK__CampingTr__Campi__656C112C" FromRole="CampingTrips" ToRole="CampingRoutes" />
+          <NavigationProperty Name="Tourist" Relationship="Self.FK__CampingTr__Instr__6754599E" FromRole="CampingTrips" ToRole="Tourists" />
+          <NavigationProperty Name="TouristLevel" Relationship="Self.FK__CampingTr__Touri__66603565" FromRole="CampingTrips" ToRole="TouristLevel" />
+          <NavigationProperty Name="TouristCampingTripInfoes" Relationship="Self.FK__TouristCa__Campi__6C190EBB" FromRole="CampingTrips" ToRole="TouristCampingTripInfo" />
+          <NavigationProperty Name="TripRecords" Relationship="Self.FK__TripRecor__Campi__6EF57B66" FromRole="CampingTrips" ToRole="TripRecords" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectionId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Section" Relationship="Self.FK__Competiti__Secti__72C60C4A" FromRole="Competitions" ToRole="Sections" />
+          <NavigationProperty Name="TouristCompetitionInfoes" Relationship="Self.FK__TouristCo__Compe__76969D2E" FromRole="Competitions" ToRole="TouristCompetitionInfo" />
+        </EntityType>
+        <EntityType Name="DayOfWeek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__DayOfW__5535A963" FromRole="DayOfWeek" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TrainerId" Type="Int32" Nullable="false" />
+          <Property Name="SectionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Section" Relationship="Self.FK__Groups__SectionI__4CA06362" FromRole="Groups" ToRole="Sections" />
+          <NavigationProperty Name="Tourist" Relationship="Self.FK__Groups__TrainerI__4BAC3F29" FromRole="Groups" ToRole="Tourists" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__GroupI__534D60F1" FromRole="Groups" ToRole="Schedule" />
+          <NavigationProperty Name="TouristGroupInfoes" Relationship="Self.FK__TouristGr__Group__5070F446" FromRole="Groups" ToRole="TouristGroupInfo" />
+          <NavigationProperty Name="Trainings" Relationship="Self.FK__Trainings__Group__59FA5E80" FromRole="Groups" ToRole="Trainings" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DayOfWeekId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TrainerId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ActivityType" Relationship="Self.FK__Schedule__Activi__5441852A" FromRole="Schedule" ToRole="ActivityType" />
+          <NavigationProperty Name="DayOfWeek" Relationship="Self.FK__Schedule__DayOfW__5535A963" FromRole="Schedule" ToRole="DayOfWeek" />
+          <NavigationProperty Name="Group" Relationship="Self.FK__Schedule__GroupI__534D60F1" FromRole="Schedule" ToRole="Groups" />
+          <NavigationProperty Name="Tourist" Relationship="Self.FK__Schedule__Traine__5629CD9C" FromRole="Schedule" ToRole="Tourists" />
+          <NavigationProperty Name="Trainings" Relationship="Self.FK__Trainings__Sched__59063A47" FromRole="Schedule" ToRole="Trainings" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ActivityType" Relationship="Self.FK__Sections__Activi__4316F928" FromRole="Sections" ToRole="ActivityType" />
+          <NavigationProperty Name="Competitions" Relationship="Self.FK__Competiti__Secti__72C60C4A" FromRole="Sections" ToRole="Competitions" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__SectionI__4CA06362" FromRole="Sections" ToRole="Groups" />
+          <NavigationProperty Name="TouristAssigments" Relationship="Self.FK__TouristAs__Secti__47DBAE45" FromRole="Sections" ToRole="TouristAssigments" />
+        </EntityType>
+        <EntityType Name="TouristAssigment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TouristId" Type="Int32" Nullable="false" />
+          <Property Name="TouristPostId" Type="Int32" />
+          <Property Name="SectionId" Type="Int32" />
+          <Property Name="TouristLevelId" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Section" Relationship="Self.FK__TouristAs__Secti__47DBAE45" FromRole="TouristAssigments" ToRole="Sections" />
+          <NavigationProperty Name="Tourist" Relationship="Self.FK__TouristAs__Touri__45F365D3" FromRole="TouristAssigments" ToRole="Tourists" />
+          <NavigationProperty Name="TouristPost" Relationship="Self.FK__TouristAs__Touri__46E78A0C" FromRole="TouristAssigments" ToRole="TouristPost" />
+          <NavigationProperty Name="TouristLevel" Relationship="Self.FK__TouristAs__Touri__48CFD27E" FromRole="TouristAssigments" ToRole="TouristLevel" />
+        </EntityType>
+        <EntityType Name="TouristCampingTripInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TouristId" Type="Int32" Nullable="false" />
+          <Property Name="CampingTripId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CampingTrip" Relationship="Self.FK__TouristCa__Campi__6C190EBB" FromRole="TouristCampingTripInfo" ToRole="CampingTrips" />
+          <NavigationProperty Name="Tourist" Relationship="Self.FK__TouristCa__Touri__6B24EA82" FromRole="TouristCampingTripInfo" ToRole="Tourists" />
+        </EntityType>
+        <EntityType Name="TouristCompetitionInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TouristId" Type="Int32" Nullable="false" />
+          <Property Name="CompetitionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Competition" Relationship="Self.FK__TouristCo__Compe__76969D2E" FromRole="TouristCompetitionInfo" ToRole="Competitions" />
+          <NavigationProperty Name="Tourist" Relationship="Self.FK__TouristCo__Touri__75A278F5" FromRole="TouristCompetitionInfo" ToRole="Tourists" />
+        </EntityType>
+        <EntityType Name="TouristGroupInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TouristId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Group" Relationship="Self.FK__TouristGr__Group__5070F446" FromRole="TouristGroupInfo" ToRole="Groups" />
+          <NavigationProperty Name="Tourist" Relationship="Self.FK__TouristGr__Touri__4F7CD00D" FromRole="TouristGroupInfo" ToRole="Tourists" />
+        </EntityType>
+        <EntityType Name="TouristLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CampingTrips" Relationship="Self.FK__CampingTr__Touri__66603565" FromRole="TouristLevel" ToRole="CampingTrips" />
+          <NavigationProperty Name="TouristAssigments" Relationship="Self.FK__TouristAs__Touri__48CFD27E" FromRole="TouristLevel" ToRole="TouristAssigments" />
+        </EntityType>
+        <EntityType Name="TouristPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TouristAssigments" Relationship="Self.FK__TouristAs__Touri__46E78A0C" FromRole="TouristPost" ToRole="TouristAssigments" />
+        </EntityType>
+        <EntityType Name="Tourist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CampingTrips" Relationship="Self.FK__CampingTr__Instr__6754599E" FromRole="Tourists" ToRole="CampingTrips" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__TrainerI__4BAC3F29" FromRole="Tourists" ToRole="Groups" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__Traine__5629CD9C" FromRole="Tourists" ToRole="Schedule" />
+          <NavigationProperty Name="TouristAssigments" Relationship="Self.FK__TouristAs__Touri__45F365D3" FromRole="Tourists" ToRole="TouristAssigments" />
+          <NavigationProperty Name="TouristCampingTripInfoes" Relationship="Self.FK__TouristCa__Touri__6B24EA82" FromRole="Tourists" ToRole="TouristCampingTripInfo" />
+          <NavigationProperty Name="TouristCompetitionInfoes" Relationship="Self.FK__TouristCo__Touri__75A278F5" FromRole="Tourists" ToRole="TouristCompetitionInfo" />
+          <NavigationProperty Name="TouristGroupInfoes" Relationship="Self.FK__TouristGr__Touri__4F7CD00D" FromRole="Tourists" ToRole="TouristGroupInfo" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" />
+          <Property Name="PeopleCame" Type="Int32" Nullable="false" />
+          <Property Name="IsHappen" Type="Boolean" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Group" Relationship="Self.FK__Trainings__Group__59FA5E80" FromRole="Trainings" ToRole="Groups" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK__Trainings__Sched__59063A47" FromRole="Trainings" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="TripRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampingTripId" Type="Int32" Nullable="false" />
+          <Property Name="CampingPlaceId" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CampingPlace" Relationship="Self.FK__TripRecor__Campi__6FE99F9F" FromRole="TripRecords" ToRole="CampingPlaces" />
+          <NavigationProperty Name="CampingTrip" Relationship="Self.FK__TripRecor__Campi__6EF57B66" FromRole="TripRecords" ToRole="CampingTrips" />
+        </EntityType>
+        <Association Name="FK__CampingTr__Activ__68487DD7">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__Activi__5441852A">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sections__Activi__4316F928">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="Sections" Type="Self.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sections">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingRo__AreaT__5CD6CB2B">
+          <End Role="AreaType" Type="Self.AreaType" Multiplicity="1" />
+          <End Role="CampingRoutes" Type="Self.CampingRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingRoutes">
+              <PropertyRef Name="AreaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingRo__Campi__628FA481">
+          <End Role="CampingPlaces" Type="Self.CampingPlace" Multiplicity="1" />
+          <End Role="CampingRoutePlaceInfo" Type="Self.CampingRoutePlaceInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingPlaces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingRoutePlaceInfo">
+              <PropertyRef Name="CampingPlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TripRecor__Campi__6FE99F9F">
+          <End Role="CampingPlaces" Type="Self.CampingPlace" Multiplicity="1" />
+          <End Role="TripRecords" Type="Self.TripRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingPlaces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripRecords">
+              <PropertyRef Name="CampingPlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingRo__Campi__619B8048">
+          <End Role="CampingRoutes" Type="Self.CampingRoute" Multiplicity="1" />
+          <End Role="CampingRoutePlaceInfo" Type="Self.CampingRoutePlaceInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingRoutes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingRoutePlaceInfo">
+              <PropertyRef Name="CampingRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingTr__Campi__656C112C">
+          <End Role="CampingRoutes" Type="Self.CampingRoute" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingRoutes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="CampingRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingTr__Instr__6754599E">
+          <End Role="Tourists" Type="Self.Tourist" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampingTr__Touri__66603565">
+          <End Role="TouristLevel" Type="Self.TouristLevel" Multiplicity="1" />
+          <End Role="CampingTrips" Type="Self.CampingTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampingTrips">
+              <PropertyRef Name="TouristMinLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCa__Campi__6C190EBB">
+          <End Role="CampingTrips" Type="Self.CampingTrip" Multiplicity="1" />
+          <End Role="TouristCampingTripInfo" Type="Self.TouristCampingTripInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingTrips">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCampingTripInfo">
+              <PropertyRef Name="CampingTripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TripRecor__Campi__6EF57B66">
+          <End Role="CampingTrips" Type="Self.CampingTrip" Multiplicity="1" />
+          <End Role="TripRecords" Type="Self.TripRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampingTrips">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripRecords">
+              <PropertyRef Name="CampingTripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Competiti__Secti__72C60C4A">
+          <End Role="Sections" Type="Self.Section" Multiplicity="1" />
+          <End Role="Competitions" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Competitions">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCo__Compe__76969D2E">
+          <End Role="Competitions" Type="Self.Competition" Multiplicity="1" />
+          <End Role="TouristCompetitionInfo" Type="Self.TouristCompetitionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competitions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCompetitionInfo">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__DayOfW__5535A963">
+          <End Role="DayOfWeek" Type="Self.DayOfWeek" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayOfWeek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="DayOfWeekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__SectionI__4CA06362">
+          <End Role="Sections" Type="Self.Section" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__TrainerI__4BAC3F29">
+          <End Role="Tourists" Type="Self.Tourist" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__GroupI__534D60F1">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristGr__Group__5070F446">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="TouristGroupInfo" Type="Self.TouristGroupInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristGroupInfo">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trainings__Group__59FA5E80">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__Traine__5629CD9C">
+          <End Role="Tourists" Type="Self.Tourist" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trainings__Sched__59063A47">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Secti__47DBAE45">
+          <End Role="Sections" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Touri__45F365D3">
+          <End Role="Tourists" Type="Self.Tourist" Multiplicity="1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Touri__46E78A0C">
+          <End Role="TouristPost" Type="Self.TouristPost" Multiplicity="0..1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristPost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="TouristPostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristAs__Touri__48CFD27E">
+          <End Role="TouristLevel" Type="Self.TouristLevel" Multiplicity="0..1" />
+          <End Role="TouristAssigments" Type="Self.TouristAssigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristAssigments">
+              <PropertyRef Name="TouristLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCa__Touri__6B24EA82">
+          <End Role="Tourists" Type="Self.Tourist" Multiplicity="1" />
+          <End Role="TouristCampingTripInfo" Type="Self.TouristCampingTripInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCampingTripInfo">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristCo__Touri__75A278F5">
+          <End Role="Tourists" Type="Self.Tourist" Multiplicity="1" />
+          <End Role="TouristCompetitionInfo" Type="Self.TouristCompetitionInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristCompetitionInfo">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TouristGr__Touri__4F7CD00D">
+          <End Role="Tourists" Type="Self.Tourist" Multiplicity="1" />
+          <End Role="TouristGroupInfo" Type="Self.TouristGroupInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tourists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TouristGroupInfo">
+              <PropertyRef Name="TouristId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sp19TourClubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
+          <EntitySet Name="AreaTypes" EntityType="Self.AreaType" />
+          <EntitySet Name="CampingPlaces" EntityType="Self.CampingPlace" />
+          <EntitySet Name="CampingRoutePlaceInfoes" EntityType="Self.CampingRoutePlaceInfo" />
+          <EntitySet Name="CampingRoutes" EntityType="Self.CampingRoute" />
+          <EntitySet Name="CampingTrips" EntityType="Self.CampingTrip" />
+          <EntitySet Name="Competitions" EntityType="Self.Competition" />
+          <EntitySet Name="DayOfWeeks" EntityType="Self.DayOfWeek" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="Sections" EntityType="Self.Section" />
+          <EntitySet Name="TouristAssigments" EntityType="Self.TouristAssigment" />
+          <EntitySet Name="TouristCampingTripInfoes" EntityType="Self.TouristCampingTripInfo" />
+          <EntitySet Name="TouristCompetitionInfoes" EntityType="Self.TouristCompetitionInfo" />
+          <EntitySet Name="TouristGroupInfoes" EntityType="Self.TouristGroupInfo" />
+          <EntitySet Name="TouristLevels" EntityType="Self.TouristLevel" />
+          <EntitySet Name="TouristPosts" EntityType="Self.TouristPost" />
+          <EntitySet Name="Tourists" EntityType="Self.Tourist" />
+          <EntitySet Name="Trainings" EntityType="Self.Training" />
+          <EntitySet Name="TripRecords" EntityType="Self.TripRecord" />
+          <AssociationSet Name="FK__CampingTr__Activ__68487DD7" Association="Self.FK__CampingTr__Activ__68487DD7">
+            <End Role="ActivityType" EntitySet="ActivityTypes" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__Activi__5441852A" Association="Self.FK__Schedule__Activi__5441852A">
+            <End Role="ActivityType" EntitySet="ActivityTypes" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sections__Activi__4316F928" Association="Self.FK__Sections__Activi__4316F928">
+            <End Role="ActivityType" EntitySet="ActivityTypes" />
+            <End Role="Sections" EntitySet="Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingRo__AreaT__5CD6CB2B" Association="Self.FK__CampingRo__AreaT__5CD6CB2B">
+            <End Role="AreaType" EntitySet="AreaTypes" />
+            <End Role="CampingRoutes" EntitySet="CampingRoutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingRo__Campi__628FA481" Association="Self.FK__CampingRo__Campi__628FA481">
+            <End Role="CampingPlaces" EntitySet="CampingPlaces" />
+            <End Role="CampingRoutePlaceInfo" EntitySet="CampingRoutePlaceInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TripRecor__Campi__6FE99F9F" Association="Self.FK__TripRecor__Campi__6FE99F9F">
+            <End Role="CampingPlaces" EntitySet="CampingPlaces" />
+            <End Role="TripRecords" EntitySet="TripRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingRo__Campi__619B8048" Association="Self.FK__CampingRo__Campi__619B8048">
+            <End Role="CampingRoutes" EntitySet="CampingRoutes" />
+            <End Role="CampingRoutePlaceInfo" EntitySet="CampingRoutePlaceInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingTr__Campi__656C112C" Association="Self.FK__CampingTr__Campi__656C112C">
+            <End Role="CampingRoutes" EntitySet="CampingRoutes" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingTr__Instr__6754599E" Association="Self.FK__CampingTr__Instr__6754599E">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampingTr__Touri__66603565" Association="Self.FK__CampingTr__Touri__66603565">
+            <End Role="TouristLevel" EntitySet="TouristLevels" />
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCa__Campi__6C190EBB" Association="Self.FK__TouristCa__Campi__6C190EBB">
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+            <End Role="TouristCampingTripInfo" EntitySet="TouristCampingTripInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TripRecor__Campi__6EF57B66" Association="Self.FK__TripRecor__Campi__6EF57B66">
+            <End Role="CampingTrips" EntitySet="CampingTrips" />
+            <End Role="TripRecords" EntitySet="TripRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Competiti__Secti__72C60C4A" Association="Self.FK__Competiti__Secti__72C60C4A">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="Competitions" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCo__Compe__76969D2E" Association="Self.FK__TouristCo__Compe__76969D2E">
+            <End Role="Competitions" EntitySet="Competitions" />
+            <End Role="TouristCompetitionInfo" EntitySet="TouristCompetitionInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__DayOfW__5535A963" Association="Self.FK__Schedule__DayOfW__5535A963">
+            <End Role="DayOfWeek" EntitySet="DayOfWeeks" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__SectionI__4CA06362" Association="Self.FK__Groups__SectionI__4CA06362">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__TrainerI__4BAC3F29" Association="Self.FK__Groups__TrainerI__4BAC3F29">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__GroupI__534D60F1" Association="Self.FK__Schedule__GroupI__534D60F1">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristGr__Group__5070F446" Association="Self.FK__TouristGr__Group__5070F446">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="TouristGroupInfo" EntitySet="TouristGroupInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trainings__Group__59FA5E80" Association="Self.FK__Trainings__Group__59FA5E80">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__Traine__5629CD9C" Association="Self.FK__Schedule__Traine__5629CD9C">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trainings__Sched__59063A47" Association="Self.FK__Trainings__Sched__59063A47">
+            <End Role="Schedule" EntitySet="Schedules" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Secti__47DBAE45" Association="Self.FK__TouristAs__Secti__47DBAE45">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Touri__45F365D3" Association="Self.FK__TouristAs__Touri__45F365D3">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Touri__46E78A0C" Association="Self.FK__TouristAs__Touri__46E78A0C">
+            <End Role="TouristPost" EntitySet="TouristPosts" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristAs__Touri__48CFD27E" Association="Self.FK__TouristAs__Touri__48CFD27E">
+            <End Role="TouristLevel" EntitySet="TouristLevels" />
+            <End Role="TouristAssigments" EntitySet="TouristAssigments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCa__Touri__6B24EA82" Association="Self.FK__TouristCa__Touri__6B24EA82">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristCampingTripInfo" EntitySet="TouristCampingTripInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristCo__Touri__75A278F5" Association="Self.FK__TouristCo__Touri__75A278F5">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristCompetitionInfo" EntitySet="TouristCompetitionInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TouristGr__Touri__4F7CD00D" Association="Self.FK__TouristGr__Touri__4F7CD00D">
+            <End Role="Tourists" EntitySet="Tourists" />
+            <End Role="TouristGroupInfo" EntitySet="TouristGroupInfoes" />
+          </AssociationSet>
+          <FunctionImport Name="func1" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func1_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="group" Mode="In" Type="String" />
+            <Parameter Name="sex" Mode="In" Type="Boolean" />
+            <Parameter Name="birthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="age" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="func10" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func10_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="group" Mode="In" Type="String" />
+            <Parameter Name="allowedTripActivityType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="func11" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func11_Result)">
+            <Parameter Name="isInstructorTrainer" Mode="In" Type="Boolean" />
+            <Parameter Name="instructorLevel" Mode="In" Type="String" />
+            <Parameter Name="campingTripsCount" Mode="In" Type="Int32" />
+            <Parameter Name="campingTripId" Mode="In" Type="Int32" />
+            <Parameter Name="campingRouteId" Mode="In" Type="Int32" />
+            <Parameter Name="campingPlace" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="func12" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func12_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="group" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="func13" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func13_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="group" Mode="In" Type="String" />
+            <Parameter Name="routeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="func2" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func2_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="sex" Mode="In" Type="Boolean" />
+            <Parameter Name="age" Mode="In" Type="Int32" />
+            <Parameter Name="specActivity" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="func3" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func3_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="func4" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func4_Result)">
+            <Parameter Name="group" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="startTime" Mode="In" Type="Time" />
+            <Parameter Name="endTime" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="func5" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func5_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="group" Mode="In" Type="String" />
+            <Parameter Name="tripCount" Mode="In" Type="Int32" />
+            <Parameter Name="campingTripId" Mode="In" Type="Int32" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="campingRouteId" Mode="In" Type="Int32" />
+            <Parameter Name="campingPlace" Mode="In" Type="String" />
+            <Parameter Name="touristLevel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="func6" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func6_Result)">
+            <Parameter Name="birthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="age" Mode="In" Type="Int32" />
+            <Parameter Name="assigmentYear" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="func7" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func7_Result)">
+            <Parameter Name="trainerName" Mode="In" Type="String" />
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="activityType" Mode="In" Type="String" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="func8" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func8_Result)">
+            <Parameter Name="section" Mode="In" Type="String" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="instructorName" Mode="In" Type="String" />
+            <Parameter Name="groupCount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="func9" IsComposable="true" ReturnType="Collection(sp19TourClubModel.func9_Result)">
+            <Parameter Name="campingPlace" Mode="In" Type="String" />
+            <Parameter Name="minLengthKm" Mode="In" Type="Int32" />
+            <Parameter Name="minTouristLevel" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sp19TourClubModelStoreContainer" CdmEntityContainer="sp19TourClubEntities">
+          <EntitySetMapping Name="ActivityTypes">
+            <EntityTypeMapping TypeName="sp19TourClubModel.ActivityType">
+              <MappingFragment StoreEntitySet="ActivityType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreaTypes">
+            <EntityTypeMapping TypeName="sp19TourClubModel.AreaType">
+              <MappingFragment StoreEntitySet="AreaType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampingPlaces">
+            <EntityTypeMapping TypeName="sp19TourClubModel.CampingPlace">
+              <MappingFragment StoreEntitySet="CampingPlaces">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampingRoutePlaceInfoes">
+            <EntityTypeMapping TypeName="sp19TourClubModel.CampingRoutePlaceInfo">
+              <MappingFragment StoreEntitySet="CampingRoutePlaceInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CampingRouteId" ColumnName="CampingRouteId" />
+                <ScalarProperty Name="CampingPlaceId" ColumnName="CampingPlaceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampingRoutes">
+            <EntityTypeMapping TypeName="sp19TourClubModel.CampingRoute">
+              <MappingFragment StoreEntitySet="CampingRoutes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AreaTypeId" ColumnName="AreaTypeId" />
+                <ScalarProperty Name="DurationDays" ColumnName="DurationDays" />
+                <ScalarProperty Name="LengthKm" ColumnName="LengthKm" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampingTrips">
+            <EntityTypeMapping TypeName="sp19TourClubModel.CampingTrip">
+              <MappingFragment StoreEntitySet="CampingTrips">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CampingRouteId" ColumnName="CampingRouteId" />
+                <ScalarProperty Name="TouristMinLevelId" ColumnName="TouristMinLevelId" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+                <ScalarProperty Name="IsPlanned" ColumnName="IsPlanned" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitions">
+            <EntityTypeMapping TypeName="sp19TourClubModel.Competition">
+              <MappingFragment StoreEntitySet="Competitions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DayOfWeeks">
+            <EntityTypeMapping TypeName="sp19TourClubModel.DayOfWeek">
+              <MappingFragment StoreEntitySet="DayOfWeek">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="sp19TourClubModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="sp19TourClubModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+                <ScalarProperty Name="DayOfWeekId" ColumnName="DayOfWeekId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sections">
+            <EntityTypeMapping TypeName="sp19TourClubModel.Section">
+              <MappingFragment StoreEntitySet="Sections">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristAssigments">
+            <EntityTypeMapping TypeName="sp19TourClubModel.TouristAssigment">
+              <MappingFragment StoreEntitySet="TouristAssigments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+                <ScalarProperty Name="TouristPostId" ColumnName="TouristPostId" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="TouristLevelId" ColumnName="TouristLevelId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristCampingTripInfoes">
+            <EntityTypeMapping TypeName="sp19TourClubModel.TouristCampingTripInfo">
+              <MappingFragment StoreEntitySet="TouristCampingTripInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+                <ScalarProperty Name="CampingTripId" ColumnName="CampingTripId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristCompetitionInfoes">
+            <EntityTypeMapping TypeName="sp19TourClubModel.TouristCompetitionInfo">
+              <MappingFragment StoreEntitySet="TouristCompetitionInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristGroupInfoes">
+            <EntityTypeMapping TypeName="sp19TourClubModel.TouristGroupInfo">
+              <MappingFragment StoreEntitySet="TouristGroupInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristLevels">
+            <EntityTypeMapping TypeName="sp19TourClubModel.TouristLevel">
+              <MappingFragment StoreEntitySet="TouristLevel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristPosts">
+            <EntityTypeMapping TypeName="sp19TourClubModel.TouristPost">
+              <MappingFragment StoreEntitySet="TouristPost">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tourists">
+            <EntityTypeMapping TypeName="sp19TourClubModel.Tourist">
+              <MappingFragment StoreEntitySet="Tourists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainings">
+            <EntityTypeMapping TypeName="sp19TourClubModel.Training">
+              <MappingFragment StoreEntitySet="Trainings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="PeopleCame" ColumnName="PeopleCame" />
+                <ScalarProperty Name="IsHappen" ColumnName="IsHappen" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TripRecords">
+            <EntityTypeMapping TypeName="sp19TourClubModel.TripRecord">
+              <MappingFragment StoreEntitySet="TripRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CampingTripId" ColumnName="CampingTripId" />
+                <ScalarProperty Name="CampingPlaceId" ColumnName="CampingPlaceId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func1" FunctionImportName="func1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func1_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func10" FunctionImportName="func10">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func10_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="AllowedTripActivityType" ColumnName="AllowedTripActivityType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func11" FunctionImportName="func11">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func11_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="InstructorLevel" ColumnName="InstructorLevel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func12" FunctionImportName="func12">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func12_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func13" FunctionImportName="func13">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func13_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func2" FunctionImportName="func2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func2_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="SpecActivity" ColumnName="SpecActivity" />
+                <ScalarProperty Name="TouristPost" ColumnName="TouristPost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func3" FunctionImportName="func3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func3_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func4" FunctionImportName="func4">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func4_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="TrainingDate" ColumnName="TrainingDate" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func5" FunctionImportName="func5">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func5_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="TouristLevel" ColumnName="TouristLevel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func6" FunctionImportName="func6">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func6_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Sername" ColumnName="Sername" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="AssigmentYear" ColumnName="AssigmentYear" />
+                <ScalarProperty Name="TouristPost" ColumnName="TouristPost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func7" FunctionImportName="func7">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func7_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TrainingType" ColumnName="TrainingType" />
+                <ScalarProperty Name="TrainingHours" ColumnName="TrainingHours" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func8" FunctionImportName="func8">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func8_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AreaType" ColumnName="AreaType" />
+                <ScalarProperty Name="DurationDays" ColumnName="DurationDays" />
+                <ScalarProperty Name="LengthKm" ColumnName="LengthKm" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="sp19TourClubModel.Store.func9" FunctionImportName="func9">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sp19TourClubModel.func9_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AreaType" ColumnName="AreaType" />
+                <ScalarProperty Name="DurationDays" ColumnName="DurationDays" />
+                <ScalarProperty Name="LengthKm" ColumnName="LengthKm" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TouristLevel" ColumnName="TouristLevel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

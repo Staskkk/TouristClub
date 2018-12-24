@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dee789071e4947ebb70a099502af41a6" Name="Diagram1">
+        <EntityTypeShape EntityType="sp19TourClubModel.ActivityType" Width="1.5" PointX="1.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.AreaType" Width="1.5" PointX="1.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingPlace" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingRoutePlaceInfo" Width="1.5" PointX="11.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingRoute" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingTrip" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Competition" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.DayOfWeek" Width="1.5" PointX="9" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Group" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Schedule" Width="1.5" PointX="11.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Section" Width="1.5" PointX="3.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristAssigment" Width="1.875" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristCampingTripInfo" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristCompetitionInfo" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristGroupInfo" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristLevel" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristPost" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Tourist" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Training" Width="1.5" PointX="13.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TripRecord" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="sp19TourClubModel.FK__CampingTr__Activ__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Schedule__Activi__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Sections__Activi__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__CampingRo__AreaT__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__CampingRo__Campi__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TripRecor__Campi__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__CampingRo__Campi__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__CampingTr__Campi__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__CampingTr__Instr__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__CampingTr__Touri__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristCa__Campi__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TripRecor__Campi__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Competiti__Secti__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristCo__Compe__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Schedule__DayOfW__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Groups__SectionI__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Groups__TrainerI__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Schedule__GroupI__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristGr__Group__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Trainings__Group__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Schedule__Traine__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__Trainings__Sched__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristAs__Secti__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristAs__Touri__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristAs__Touri__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristAs__Touri__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristCa__Touri__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristCo__Touri__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="sp19TourClubModel.FK__TouristGr__Touri__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

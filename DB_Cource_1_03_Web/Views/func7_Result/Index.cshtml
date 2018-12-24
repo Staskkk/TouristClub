@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DB_Cource_1_03_Web.Models.func7_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingHours)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingHours)
+        </td>
+    </tr>
+}
+
+</table>

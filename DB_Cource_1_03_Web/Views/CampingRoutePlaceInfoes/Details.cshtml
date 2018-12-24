@@ -1,0 +1,34 @@
+﻿@model DB_Cource_1_03_Web.Models.CampingRoutePlaceInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CampingRoutePlaceInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CampingPlace.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampingPlace.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampingRoute.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampingRoute.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

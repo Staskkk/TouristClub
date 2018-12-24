@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DB_Cource_1_03_Web.Models.func9_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DurationDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LengthKm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TouristLevel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DurationDays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LengthKm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TouristLevel)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DB_Cource_1_03_Web.Models.Training>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PeopleCame)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsHappen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Schedule.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeopleCame)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsHappen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Schedule.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,361 @@
+﻿<Window x:Class="DB_Cource_1_02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_Cource_1_02"
+        mc:Ignorable="d"
+        Title="Tourist Club" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="touristViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Tourist}, CreateList=True}"/>
+        <CollectionViewSource x:Key="touristAssigmentViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristAssigment}, CreateList=True}"/>
+        <CollectionViewSource x:Key="touristCampingTripInfoViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristCampingTripInfo}, CreateList=True}"/>
+        <CollectionViewSource x:Key="touristCompetitionInfoViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristCompetitionInfo}, CreateList=True}"/>
+        <CollectionViewSource x:Key="touristGroupInfoViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristGroupInfo}, CreateList=True}"/>
+        <CollectionViewSource x:Key="campingPlaceViewSource" d:DesignSource="{d:DesignInstance {x:Type local:CampingPlace}, CreateList=True}"/>
+        <CollectionViewSource x:Key="campingRouteViewSource" d:DesignSource="{d:DesignInstance {x:Type local:CampingRoute}, CreateList=True}"/>
+        <CollectionViewSource x:Key="campingRoutePlaceInfoViewSource" d:DesignSource="{d:DesignInstance {x:Type local:CampingRoutePlaceInfo}, CreateList=True}"/>
+        <CollectionViewSource x:Key="campingTripViewSource" d:DesignSource="{d:DesignInstance {x:Type local:CampingTrip}, CreateList=True}"/>
+        <CollectionViewSource x:Key="competitionViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Competition}, CreateList=True}"/>
+        <CollectionViewSource x:Key="areaTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type local:AreaType}, CreateList=True}"/>
+        <CollectionViewSource x:Key="touristLevelViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristLevel}, CreateList=True}"/>
+        <CollectionViewSource x:Key="touristPostViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristPost}, CreateList=True}"/>
+        <CollectionViewSource x:Key="scheduleViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Schedule}, CreateList=True}"/>
+        <CollectionViewSource x:Key="trainingViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Training}, CreateList=True}"/>
+        <CollectionViewSource x:Key="tripRecordViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TripRecord}, CreateList=True}"/>
+        <CollectionViewSource x:Key="groupViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Group}, CreateList=True}"/>
+        <CollectionViewSource x:Key="sectionViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Section}, CreateList=True}"/>
+        <CollectionViewSource x:Key="activityTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type local:ActivityType}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
+            <TabItem Header="Tourists">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristViewSource}">
+                    <DataGrid x:Name="touristDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="middleNameColumn" Binding="{Binding MiddleName}" Header="Middle Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="sernameColumn" Binding="{Binding Sername}" Header="Sername" Width="SizeToHeader"/>
+                            <DataGridCheckBoxColumn x:Name="sexColumn" Binding="{Binding Sex}" Header="Sex" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="birthDateColumn" Header="Birth Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding BirthDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tourist Assigments">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristAssigmentViewSource}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32*"/>
+                        <ColumnDefinition Width="61*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="touristAssigmentDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn1" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="touristIdColumn" Binding="{Binding TouristId}" Header="Tourist Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="touristPostIdColumn" Binding="{Binding TouristPostId}" Header="Tourist Post Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="sectionIdColumn" Binding="{Binding SectionId}" Header="Section Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="touristLevelIdColumn" Binding="{Binding TouristLevelId}" Header="Tourist Level Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startDateColumn" Header="Start Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tourist Camping Trip Info">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristCampingTripInfoViewSource}">
+                    <DataGrid x:Name="touristCampingTripInfoDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn2" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="touristIdColumn1" Binding="{Binding TouristId}" Header="Tourist Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="campingTripIdColumn" Binding="{Binding CampingTripId}" Header="Camping Trip Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tourist Competition Info">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristCompetitionInfoViewSource}">
+                    <DataGrid x:Name="touristCompetitionInfoDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn3" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="touristIdColumn2" Binding="{Binding TouristId}" Header="Tourist Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="competitionIdColumn" Binding="{Binding CompetitionId}" Header="Competition Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tourist Group Info">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristGroupInfoViewSource}">
+                    <DataGrid x:Name="touristGroupInfoDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn4" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="touristIdColumn3" Binding="{Binding TouristId}" Header="Tourist Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="groupIdColumn" Binding="{Binding GroupId}" Header="Group Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startDateColumn1" Header="Start Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="endDateColumn1" Header="End Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tourist Levels">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristLevelViewSource}">
+                    <DataGrid x:Name="touristLevelDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn11" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn3" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tourist Posts">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristPostViewSource}">
+                    <DataGrid x:Name="touristPostDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn12" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn4" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Schedule">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource scheduleViewSource}">
+                    <DataGrid x:Name="scheduleDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn13" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="groupIdColumn1" Binding="{Binding GroupId}" Header="Group Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="activityTypeIdColumn1" Binding="{Binding ActivityTypeId}" Header="Activity Type Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="dayOfWeekIdColumn" Binding="{Binding DayOfWeekId}" Header="Day Of Week Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="addressColumn" Binding="{Binding Address}" Header="Address" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="startTimeColumn" Binding="{Binding StartTime}" Header="Start Time" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="endTimeColumn" Binding="{Binding EndTime}" Header="End Time" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="trainerIdColumn" Binding="{Binding TrainerId}" Header="Trainer Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startDateColumn4" Header="Start Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="endDateColumn4" Header="End Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Trainings">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource trainingViewSource}">
+                    <DataGrid x:Name="trainingDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn14" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="scheduleIdColumn" Binding="{Binding ScheduleId}" Header="Schedule Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="peopleCameColumn" Binding="{Binding PeopleCame}" Header="People Came" Width="SizeToHeader"/>
+                            <DataGridCheckBoxColumn x:Name="isHappenColumn" Binding="{Binding IsHappen}" Header="Is Happen" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="groupIdColumn2" Binding="{Binding GroupId}" Header="Group Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="dateColumn" Header="Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Trip Records">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource tripRecordViewSource}">
+                    <DataGrid x:Name="tripRecordDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn15" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="campingTripIdColumn1" Binding="{Binding CampingTripId}" Header="Camping Trip Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="campingPlaceIdColumn1" Binding="{Binding CampingPlaceId}" Header="Camping Place Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startTimeColumn1" Header="Start Time" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="endTimeColumn1" Header="End Time" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="commentsColumn" Binding="{Binding Comments}" Header="Comments" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Groups">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource groupViewSource}">
+                    <DataGrid x:Name="groupDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn16" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn5" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="trainerIdColumn1" Binding="{Binding TrainerId}" Header="Trainer Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="sectionIdColumn2" Binding="{Binding SectionId}" Header="Section Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Sections">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource sectionViewSource}">
+                    <DataGrid x:Name="sectionDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn17" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn6" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="activityTypeIdColumn2" Binding="{Binding ActivityTypeId}" Header="Activity Type Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Activity Types">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource activityTypeViewSource}">
+                    <DataGrid x:Name="activityTypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn18" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn7" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Camping Places">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource campingPlaceViewSource}">
+                    <DataGrid x:Name="campingPlaceDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn5" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="latitudeColumn" Binding="{Binding Latitude}" Header="Latitude" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="longitudeColumn" Binding="{Binding Longitude}" Header="Longitude" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Camping Routes">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource campingRouteViewSource}">
+                    <DataGrid x:Name="campingRouteDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn6" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="areaTypeIdColumn" Binding="{Binding AreaTypeId}" Header="Area Type Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="durationDaysColumn" Binding="{Binding DurationDays}" Header="Duration Days" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="lengthKmColumn" Binding="{Binding LengthKm}" Header="Length Km" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Camping Route Place Info">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource campingRoutePlaceInfoViewSource}">
+                    <DataGrid x:Name="campingRoutePlaceInfoDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn7" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="campingRouteIdColumn" Binding="{Binding CampingRouteId}" Header="Camping Route Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="campingPlaceIdColumn" Binding="{Binding CampingPlaceId}" Header="Camping Place Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Camping Trips">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource campingTripViewSource}">
+                    <DataGrid x:Name="campingTripDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn8" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="campingRouteIdColumn1" Binding="{Binding CampingRouteId}" Header="Camping Route Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="touristMinLevelIdColumn" Binding="{Binding TouristMinLevelId}" Header="Tourist Min Level Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="instructorIdColumn" Binding="{Binding InstructorId}" Header="Instructor Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="activityTypeIdColumn" Binding="{Binding ActivityTypeId}" Header="Activity Type Id" Width="SizeToHeader"/>
+                            <DataGridCheckBoxColumn x:Name="isPlannedColumn" Binding="{Binding IsPlanned}" Header="Is Planned" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startDateColumn2" Header="Start Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="endDateColumn2" Header="End Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Competitions">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource competitionViewSource}">
+                    <DataGrid x:Name="competitionDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn9" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="sectionIdColumn1" Binding="{Binding SectionId}" Header="Section Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="descriptionColumn1" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startDateColumn3" Header="Start Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="endDateColumn3" Header="End Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Area Types">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource areaTypeViewSource}">
+                    <DataGrid x:Name="areaTypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn10" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn2" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

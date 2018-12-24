@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{21534EC7-3B95-4AF0-9121-7707578B37B3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DB_Cource_1_02</RootNamespace>
+    <AssemblyName>DB_Cource_1_02</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ActivityType.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AreaType.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampingPlace.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampingRoute.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampingRoutePlaceInfo.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampingTrip.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Competition.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DayOfWeek.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func10_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func11_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func12_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func13_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func1_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func2_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func3_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func4_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func5_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func6_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func7_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func8_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="func9_Result.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Section.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tourist.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristAssigment.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristCampingTripInfo.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristClubModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TouristClubModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristClubModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristClubModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TouristClubModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TouristCompetitionInfo.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristGroupInfo.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristLevel.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TouristPost.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Training.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TripRecord.cs">
+      <DependentUpon>TouristClubModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ActivityType.datasource" />
+    <None Include="Properties\DataSources\AreaType.datasource" />
+    <None Include="Properties\DataSources\CampingPlace.datasource" />
+    <None Include="Properties\DataSources\CampingRoute.datasource" />
+    <None Include="Properties\DataSources\CampingRoutePlaceInfo.datasource" />
+    <None Include="Properties\DataSources\CampingTrip.datasource" />
+    <None Include="Properties\DataSources\Competition.datasource" />
+    <None Include="Properties\DataSources\func10_Result.datasource" />
+    <None Include="Properties\DataSources\func11_Result.datasource" />
+    <None Include="Properties\DataSources\func12_Result.datasource" />
+    <None Include="Properties\DataSources\func13_Result.datasource" />
+    <None Include="Properties\DataSources\func1_Result.datasource" />
+    <None Include="Properties\DataSources\func2_Result.datasource" />
+    <None Include="Properties\DataSources\func3_Result.datasource" />
+    <None Include="Properties\DataSources\func4_Result.datasource" />
+    <None Include="Properties\DataSources\func5_Result.datasource" />
+    <None Include="Properties\DataSources\func6_Result.datasource" />
+    <None Include="Properties\DataSources\func7_Result.datasource" />
+    <None Include="Properties\DataSources\func8_Result.datasource" />
+    <None Include="Properties\DataSources\func9_Result.datasource" />
+    <None Include="Properties\DataSources\Group.datasource" />
+    <None Include="Properties\DataSources\Schedule.datasource" />
+    <None Include="Properties\DataSources\Section.datasource" />
+    <None Include="Properties\DataSources\Tourist.datasource" />
+    <None Include="Properties\DataSources\TouristAssigment.datasource" />
+    <None Include="Properties\DataSources\TouristCampingTripInfo.datasource" />
+    <None Include="Properties\DataSources\TouristCompetitionInfo.datasource" />
+    <None Include="Properties\DataSources\TouristGroupInfo.datasource" />
+    <None Include="Properties\DataSources\TouristLevel.datasource" />
+    <None Include="Properties\DataSources\TouristPost.datasource" />
+    <None Include="Properties\DataSources\Training.datasource" />
+    <None Include="Properties\DataSources\TripRecord.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="TouristClubModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TouristClubModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TouristClubModel.edmx.diagram">
+      <DependentUpon>TouristClubModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TouristClubModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TouristClubModel.edmx</DependentUpon>
+      <LastGenOutput>TouristClubModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TouristClubModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TouristClubModel.edmx</DependentUpon>
+      <LastGenOutput>TouristClubModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
