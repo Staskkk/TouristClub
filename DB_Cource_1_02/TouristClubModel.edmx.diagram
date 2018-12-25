@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dee789071e4947ebb70a099502af41a6" Name="Diagram1">
-        <EntityTypeShape EntityType="sp19TourClubModel.ActivityType" Width="1.5" PointX="1.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.AreaType" Width="1.5" PointX="1.5" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.CampingPlace" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.CampingRoutePlaceInfo" Width="1.5" PointX="11.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.CampingRoute" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.CampingTrip" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.Competition" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.DayOfWeek" Width="1.5" PointX="9" PointY="5.5" IsExpanded="true" />
+      <Diagram DiagramId="dee789071e4947ebb70a099502af41a6" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="sp19TourClubModel.ActivityType" Width="1.5" PointX="12.625" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.AreaType" Width="1.5" PointX="18" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingPlace" Width="1.5" PointX="17.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingRoutePlaceInfo" Width="2" PointX="10.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingRoute" Width="1.5" PointX="14.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.CampingTrip" Width="1.5" PointX="3.625" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Competition" Width="1.5" PointX="1.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.DayOfWeek" Width="1.5" PointX="16.5" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sp19TourClubModel.Group" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.Schedule" Width="1.5" PointX="11.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.Section" Width="1.5" PointX="3.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Schedule" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Section" Width="1.5" PointX="15.625" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="sp19TourClubModel.TouristAssigment" Width="1.875" PointX="6" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.TouristCampingTripInfo" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.TouristCompetitionInfo" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.TouristGroupInfo" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.TouristLevel" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.TouristPost" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.Tourist" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp19TourClubModel.Training" Width="1.5" PointX="13.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristCampingTripInfo" Width="2" PointX="8.125" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristCompetitionInfo" Width="2" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristGroupInfo" Width="1.625" PointX="16.125" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristLevel" Width="1.5" PointX="14.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.TouristPost" Width="1.5" PointX="18.125" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Tourist" Width="1.5" PointX="1.875" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp19TourClubModel.Training" Width="1.5" PointX="12.5" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sp19TourClubModel.TripRecord" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
         <AssociationConnector Association="sp19TourClubModel.FK__CampingTr__Activ__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="sp19TourClubModel.FK__Schedule__Activi__5441852A" ManuallyRouted="false" />
