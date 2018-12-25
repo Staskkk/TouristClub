@@ -127,25 +127,10 @@ namespace DB_Cource_1_03_Web.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult ExportCustomers()
+        public ActionResult ExportPdf()
         {
-            List<Tourist> allCustomer = new List<Tourist>();
-            allCustomer = db.Tourists.ToList();
-
-
-            ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Reports"), "TouristReport.rpt"));
-
-            rd.SetDataSource(allCustomer);
-
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
-
-
-            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-            stream.Seek(0, SeekOrigin.Begin);
-            return File(stream, "application/pdf", "TouristList.pdf");
+            var res = MvcApplication.GetExportPdf<Tourist>(db.Tourists.ToList(), Server, Response);
+            return File(res.Item1, res.Item2, res.Item3);
         }
     }
 }

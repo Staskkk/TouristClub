@@ -13,10 +13,10 @@ namespace DB_Cource_1_03_Web.Models
     
     public partial class func4_Result
     {
-        public Nullable<int> Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Sername { get; set; }
-        public Nullable<System.DateTime> TrainingDate { get; set; }
+        public System.DateTime TrainingDate { get; set; }
         public string GroupName { get; set; }
         public string ActivityType { get; set; }
     }

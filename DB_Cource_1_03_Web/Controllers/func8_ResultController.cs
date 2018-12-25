@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DB_Cource_1_03_Web.Models;
+using Newtonsoft.Json;
 
 namespace DB_Cource_1_03_Web.Controllers
 {
@@ -17,8 +18,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: func8_Result
         public ActionResult Index(Func8Input func8Input)
         {
-            return View(db.func8(func8Input.Section, func8Input.StartDate, func8Input.EndDate,
-                func8Input.InstructorName, func8Input.GroupCount));
+            var res = db.func8(func8Input.Section, func8Input.StartDate, func8Input.EndDate,
+                func8Input.InstructorName, func8Input.GroupCount).ToList();
+            Response.AppendCookie(new HttpCookie("Data", JsonConvert.SerializeObject(res)));
+            return View(res);
         }
 
         // GET: func8_Result/Create
@@ -46,6 +49,18 @@ namespace DB_Cource_1_03_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult ExportPdf()
+        {
+            var data = JsonConvert.DeserializeObject<List<func8_Result>>(Request.Cookies["Data"].Value);
+            if (data != null)
+            {
+                var res = MvcApplication.GetExportPdf(data, Server, Response);
+                return File(res.Item1, res.Item2, res.Item3);
+            }
+
+            return Index(null);
         }
     }
 }

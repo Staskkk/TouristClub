@@ -13,7 +13,7 @@ namespace DB_Cource_1_03_Web.Models
     
     public partial class func9_Result
     {
-        public Nullable<int> Id { get; set; }
+        public int Id { get; set; }
         public string AreaType { get; set; }
         public int DurationDays { get; set; }
         public double LengthKm { get; set; }

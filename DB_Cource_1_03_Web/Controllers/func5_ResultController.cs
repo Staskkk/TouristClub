@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DB_Cource_1_03_Web.Models;
+using Newtonsoft.Json;
 
 namespace DB_Cource_1_03_Web.Controllers
 {
@@ -17,9 +18,11 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: func5_Result
         public ActionResult Index(Func5Input func5Input)
         {
-            return View(db.func5(func5Input.Section, func5Input.Group, func5Input.TripCount, func5Input.CampingTripId,
+            var res = db.func5(func5Input.Section, func5Input.Group, func5Input.TripCount, func5Input.CampingTripId,
                 func5Input.StartDate, func5Input.EndDate, func5Input.CampingRouteId,
-                func5Input.CampingPlace, func5Input.TouristLevel));
+                func5Input.CampingPlace, func5Input.TouristLevel).ToList();
+            Response.AppendCookie(new HttpCookie("Data", JsonConvert.SerializeObject(res)));
+            return View(res);
         }
 
         // GET: func5_Result/Create
@@ -47,6 +50,18 @@ namespace DB_Cource_1_03_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult ExportPdf()
+        {
+            var data = JsonConvert.DeserializeObject<List<func5_Result>>(Request.Cookies["Data"].Value);
+            if (data != null)
+            {
+                var res = MvcApplication.GetExportPdf(data, Server, Response);
+                return File(res.Item1, res.Item2, res.Item3);
+            }
+
+            return Index(null);
         }
     }
 }

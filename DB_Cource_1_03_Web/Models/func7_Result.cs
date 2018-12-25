@@ -13,9 +13,9 @@ namespace DB_Cource_1_03_Web.Models
     
     public partial class func7_Result
     {
-        public Nullable<int> Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string TrainingType { get; set; }
-        public Nullable<int> TrainingHours { get; set; }
+        public int TrainingHours { get; set; }
     }
 }

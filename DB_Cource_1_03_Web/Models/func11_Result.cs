@@ -13,7 +13,7 @@ namespace DB_Cource_1_03_Web.Models
     
     public partial class func11_Result
     {
-        public Nullable<int> Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Sername { get; set; }
         public string InstructorLevel { get; set; }

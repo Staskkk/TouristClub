@@ -13,14 +13,14 @@ namespace DB_Cource_1_03_Web.Models
     
     public partial class func2_Result
     {
-        public Nullable<int> Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string MiddleName { get; set; }
         public string Sername { get; set; }
         public bool Sex { get; set; }
         public System.DateTime BirthDate { get; set; }
         public string Section { get; set; }
-        public Nullable<int> Age { get; set; }
+        public int Age { get; set; }
         public string SpecActivity { get; set; }
         public string TouristPost { get; set; }
     }

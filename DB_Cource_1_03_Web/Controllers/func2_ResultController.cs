@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DB_Cource_1_03_Web.Models;
+using Newtonsoft.Json;
 
 namespace DB_Cource_1_03_Web.Controllers
 {
@@ -17,7 +18,9 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: func2_Result
         public ActionResult Index(Func2Input func2Input)
         {
-            return View(db.func2(func2Input.Section, func2Input.Sex, func2Input.Age, func2Input.SpecActivity));
+            var res = db.func2(func2Input.Section, func2Input.Sex, func2Input.Age, func2Input.SpecActivity).ToList();
+            Response.AppendCookie(new HttpCookie("Data", JsonConvert.SerializeObject(res)));
+            return View(res);
         }
 
         // GET: func2_Result/Create
@@ -45,6 +48,18 @@ namespace DB_Cource_1_03_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult ExportPdf()
+        {
+            var data = JsonConvert.DeserializeObject<List<func2_Result>>(Request.Cookies["Data"].Value);
+            if (data != null)
+            {
+                var res = MvcApplication.GetExportPdf(data, Server, Response);
+                return File(res.Item1, res.Item2, res.Item3);
+            }
+
+            return Index(null);
         }
     }
 }

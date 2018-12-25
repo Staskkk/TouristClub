@@ -13,7 +13,7 @@ namespace DB_Cource_1_03_Web.Models
     
     public partial class func3_Result
     {
-        public Nullable<int> Id { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
