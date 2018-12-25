@@ -6,8 +6,8 @@ namespace DB_Cource_1_03_Web.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Login")]
+        public string Login { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -42,16 +42,15 @@ namespace DB_Cource_1_03_Web.Models
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Login")]
+        public string Login { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Login")]
+        public string Login { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -65,9 +64,8 @@ namespace DB_Cource_1_03_Web.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Login")]
+        public string Login { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -84,9 +82,8 @@ namespace DB_Cource_1_03_Web.Models
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Login")]
+        public string Login { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -105,8 +102,7 @@ namespace DB_Cource_1_03_Web.Models
     public class ForgotPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Login")]
+        public string Login { get; set; }
     }
 }
