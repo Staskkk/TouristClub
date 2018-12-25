@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DB_Cource_1_02"
         mc:Ignorable="d"
-        Title="Tourist Club" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Tourist Club" Height="450" Width="815.94" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Window.Resources>
         <CollectionViewSource x:Key="touristViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Tourist}, CreateList=True}"/>
         <CollectionViewSource x:Key="touristAssigmentViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristAssigment}, CreateList=True}"/>
@@ -28,7 +28,7 @@
         <CollectionViewSource x:Key="activityTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type local:ActivityType}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
+        <TabControl HorizontalAlignment="Left" Height="321" VerticalAlignment="Top" Width="792">
             <TabItem Header="Tourists">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristViewSource}">
                     <DataGrid x:Name="touristDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
@@ -356,6 +356,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="502,344,0,0" VerticalAlignment="Top" Width="218" Height="47" Click="SaveButton_Click"/>
+        <Button Content="Refresh" Click="BtnRefresh_Click" HorizontalAlignment="Left" Margin="270,342,0,0" VerticalAlignment="Top" Width="203" RenderTransformOrigin="0.5,0.5" Height="50"/>
 
     </Grid>
 </Window>
