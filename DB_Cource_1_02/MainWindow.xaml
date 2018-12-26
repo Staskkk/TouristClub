@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DB_Cource_1_02"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Tourist Club" Height="450" Width="815.94" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Tourist Club" Height="528.474" Width="815.94" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="touristViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Tourist}, CreateList=True}"/>
         <CollectionViewSource x:Key="touristAssigmentViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TouristAssigment}, CreateList=True}"/>
@@ -28,7 +29,11 @@
         <CollectionViewSource x:Key="activityTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type local:ActivityType}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="321" VerticalAlignment="Top" Width="792">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TabControl Margin="0,0,16,97" Grid.Row="0" Grid.RowSpan="2">
             <TabItem Header="Tourists">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource touristViewSource}">
                     <DataGrid x:Name="touristDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
@@ -207,14 +212,16 @@
                             <DataGridTemplateColumn x:Name="startTimeColumn1" Header="Start Time" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <DatePicker SelectedDate="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        <materialDesign:TimePicker Is24Hours="True" x:Name="PresetTimePicker"
+                                            SelectedTime="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn x:Name="endTimeColumn1" Header="End Time" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <DatePicker SelectedDate="{Binding EndTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        <materialDesign:TimePicker Is24Hours="True" x:Name="PresetTimePicker" 
+                                            SelectedTime="{Binding EndTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -356,8 +363,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="502,344,0,0" VerticalAlignment="Top" Width="218" Height="47" Click="SaveButton_Click"/>
-        <Button Content="Refresh" Click="BtnRefresh_Click" HorizontalAlignment="Left" Margin="270,342,0,0" VerticalAlignment="Top" Width="203" RenderTransformOrigin="0.5,0.5" Height="50"/>
+        <Button Grid.Row="1" Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="509,0,0,32" Width="218" Height="44" Click="SaveButton_Click" VerticalAlignment="Bottom"/>
+        <Button Grid.Row="1" Content="Refresh" Click="BtnRefresh_Click" HorizontalAlignment="Left" Margin="279,0,0,29" Width="178" RenderTransformOrigin="0.5,0.5" Height="47" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

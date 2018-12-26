@@ -70,7 +70,7 @@ namespace DB_Cource_1_02
             var context = Connect(login, tbxPass.Password);
             if (context == null)
             {
-                MessageBox.Show("Invalid login or password!");
+                MessageBox.Show("Invalid login or password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
