@@ -18,6 +18,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: func5_Result
         public ActionResult Index(Func5Input func5Input)
         {
+            if (string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
+            {
+                return View(new List<func5_Result>());
+            }
             var res = db.func5(func5Input.Section, func5Input.Group, func5Input.TripCount, func5Input.CampingTripId,
                 func5Input.StartDate, func5Input.EndDate, func5Input.CampingRouteId,
                 func5Input.CampingPlace, func5Input.TouristLevel).ToList();

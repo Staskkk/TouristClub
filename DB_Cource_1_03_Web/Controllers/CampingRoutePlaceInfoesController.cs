@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: CampingRoutePlaceInfoes
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<CampingRoutePlaceInfo>());
+            }
             var campingRoutePlaceInfoes = db.CampingRoutePlaceInfoes.Include(c => c.CampingPlace).Include(c => c.CampingRoute);
             return View(campingRoutePlaceInfoes.ToList());
         }

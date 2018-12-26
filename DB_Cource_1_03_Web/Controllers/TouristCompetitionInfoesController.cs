@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: TouristCompetitionInfoes
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<TouristCompetitionInfo>());
+            }
             var touristCompetitionInfoes = db.TouristCompetitionInfoes.Include(t => t.Competition).Include(t => t.Tourist);
             return View(touristCompetitionInfoes.ToList());
         }

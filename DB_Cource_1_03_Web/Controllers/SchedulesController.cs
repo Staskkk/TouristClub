@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: Schedules
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<Schedule>());
+            }
             var schedules = db.Schedules.Include(s => s.ActivityType).Include(s => s.DayOfWeek).Include(s => s.Group).Include(s => s.Tourist);
             return View(schedules.ToList());
         }

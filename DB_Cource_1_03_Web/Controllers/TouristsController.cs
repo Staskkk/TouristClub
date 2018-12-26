@@ -19,7 +19,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: Tourists
         public ActionResult Index()
         {
-            Console.WriteLine(System.Web.HttpContext.Current.User.Identity.Name);
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin" && System.Web.HttpContext.Current.User.Identity.Name != "Userr")
+            {
+                return View(new List<Tourist>());
+            }
             return View(db.Tourists.ToList());
         }
 

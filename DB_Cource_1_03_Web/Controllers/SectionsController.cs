@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: Sections
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<Section>());
+            }
             var sections = db.Sections.Include(s => s.ActivityType);
             return View(sections.ToList());
         }

@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: Competitions
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<Competition>());
+            }
             var competitions = db.Competitions.Include(c => c.Section);
             return View(competitions.ToList());
         }

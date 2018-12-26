@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: CampingTrips
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<CampingTrip>());
+            }
             var campingTrips = db.CampingTrips.Include(c => c.ActivityType).Include(c => c.CampingRoute).Include(c => c.Tourist).Include(c => c.TouristLevel);
             return View(campingTrips.ToList());
         }

@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: TouristAssigments
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<TouristAssigment>());
+            }
             var touristAssigments = db.TouristAssigments.Include(t => t.Section).Include(t => t.Tourist).Include(t => t.TouristPost).Include(t => t.TouristLevel);
             return View(touristAssigments.ToList());
         }

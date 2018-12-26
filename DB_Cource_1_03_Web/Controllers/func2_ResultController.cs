@@ -18,6 +18,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: func2_Result
         public ActionResult Index(Func2Input func2Input)
         {
+            if (string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
+            {
+                return View(new List<func2_Result>());
+            }
             var res = db.func2(func2Input.Section, func2Input.Sex, func2Input.Age, func2Input.SpecActivity).ToList();
             Response.AppendCookie(new HttpCookie("Data", JsonConvert.SerializeObject(res)));
             return View(res);

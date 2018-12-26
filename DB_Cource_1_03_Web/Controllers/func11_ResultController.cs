@@ -18,6 +18,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: func11_Result
         public ActionResult Index(Func11Input func11Input)
         {
+            if (string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
+            {
+                return View(new List<func11_Result>());
+            }
             var res = db.func11(func11Input.IsInstructorTrainer, func11Input.InstructorLevel,
                 func11Input.CampingTripsCount, func11Input.CampingTripId, func11Input.CampingRouteId,
                 func11Input.CampingPlace).ToList();

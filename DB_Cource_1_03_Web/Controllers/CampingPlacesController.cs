@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: CampingPlaces
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<CampingPlace>());
+            }
             return View(db.CampingPlaces.ToList());
         }
 

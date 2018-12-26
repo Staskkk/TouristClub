@@ -18,6 +18,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: func9_Result
         public ActionResult Index(Func9Input func9Input)
         {
+            if (string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
+            {
+                return View(new List<func9_Result>());
+            }
             var res = db.func9(func9Input.CampingPlace, func9Input.MinLengthKm, func9Input.MinTouristLevel).ToList();
             Response.AppendCookie(new HttpCookie("Data", JsonConvert.SerializeObject(res)));
             return View(res);

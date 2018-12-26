@@ -17,6 +17,10 @@ namespace DB_Cource_1_03_Web.Controllers
         // GET: Groups
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.Name != "Admin")
+            {
+                return View(new List<Group>());
+            }
             var groups = db.Groups.Include(g => g.Section).Include(g => g.Tourist);
             return View(groups.ToList());
         }
